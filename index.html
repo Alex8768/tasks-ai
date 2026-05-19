@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Инструменты для бизнеса | Атомарные задачи под ключ</title>
+    <meta name="description" content="Точечные AI-решения для бизнеса за 2–5 дней: чат-боты, квалификация лидов, обогащение баз, генерация писем. Фиксированная цена, договор НПД.">
+    <meta property="og:title" content="AI-инструменты для бизнеса">
+    <meta property="og:description" content="Атомарные AI-задачи под ключ за 2–5 дней. Фиксированный прайс, прозрачный результат.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#09090b">
+    <style>
+        :root {
+            --bg: #09090b;
+            --bg-glow: radial-gradient(circle at center, #111114 0%, #09090b 100%);
+            --card-bg: rgba(20, 20, 22, 0.7);
+            --border: #27272a;
+            --border-hover: #ffffff30;
+            --text: #fafafa;
+            --text-muted: #a1a1aa;
+            --accent: #ffffff;
+            --accent-text: #09090b;
+            --tag-bg: rgba(29, 29, 33, 0.5);
+
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.5);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.5), 0 2px 4px -1px rgba(0,0,0,0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.6), 0 4px 6px -2px rgba(0,0,0,0.4);
+            --card-glow: 0 0 0 1px rgba(255,255,255,0.03), 0 1px 3px rgba(0,0,0,0.2);
+            --card-glow-hover: 0 0 0 1px rgba(255,255,255,0.1), 0 20px 25px -5px rgba(0,0,0,0.5), 0 10px 10px -5px rgba(0,0,0,0.4);
+
+            --ease: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            background-image: var(--bg-glow);
+            color: var(--text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 12px;
+            z-index: 200;
+            background: var(--accent);
+            color: var(--accent-text);
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .skip-link:focus {
+            left: 24px;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(9, 9, 11, 0.7);
+            transition: background 0.3s var(--ease), box-shadow 0.3s var(--ease);
+        }
+
+        header.scrolled {
+            background: rgba(9, 9, 11, 0.92);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+            gap: 24px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: -0.03em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent);
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .logo-dot {
+            width: 7px;
+            height: 7px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+            transition: transform 0.3s var(--ease);
+        }
+
+        .logo:hover .logo-dot {
+            transform: scale(1.3);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 8px;
+            transition: color 0.2s var(--ease), background 0.2s var(--ease);
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .nav-cta {
+            background-color: transparent;
+            color: var(--text);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            transition: all 0.3s var(--ease);
+            box-shadow: var(--shadow-sm);
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover {
+            background-color: var(--accent);
+            color: var(--accent-text);
+            border-color: var(--accent);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .menu-toggle svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .hero {
+            padding: 128px 0 96px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255,255,255,0.06), transparent);
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 56px;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            line-height: 1.05;
+            margin-bottom: 28px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--accent);
+            text-wrap: balance;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 36px; }
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 40px;
+            text-wrap: balance;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--accent-text);
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid var(--accent);
+            transition: all 0.3s var(--ease);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text);
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            transition: all 0.3s var(--ease);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--border-hover);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background-color: var(--tag-bg);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-muted);
+            box-shadow: var(--card-glow);
+            transition: all 0.2s var(--ease);
+        }
+
+        .badge:hover {
+            border-color: var(--border-hover);
+            color: var(--text);
+        }
+
+        .steps-section {
+            padding: 88px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .steps-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 520px) {
+            .steps-grid { grid-template-columns: 1fr; }
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+            box-shadow: var(--card-glow);
+        }
+
+        .step-num {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .step-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .step-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .services-section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            margin-bottom: 16px;
+            text-align: center;
+            color: var(--accent);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 17px;
+            max-width: 560px;
+            margin: 0 auto 64px;
+            text-wrap: balance;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 28px;
+        }
+
+        @media (max-width: 420px) {
+            .grid { grid-template-columns: 1fr; gap: 20px; }
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.4s var(--ease);
+            box-shadow: var(--card-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            top: -110%;
+            left: -210%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.01) 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(30deg);
+            transition: all 0.8s var(--ease);
+            z-index: 1;
+        }
+
+        .card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: var(--card-glow-hover);
+            background-color: rgba(20, 20, 22, 0.9);
+        }
+
+        .card:hover::after {
+            top: -50%;
+            left: -50%;
+        }
+
+        .card-header, .feature-list, .card-footer {
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-header h3 {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+            line-height: 1.25;
+            color: var(--accent);
+        }
+
+        .meta-box {
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .meta-line {
+            font-size: 13px;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        .meta-label {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 36px;
+            font-size: 14px;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            color: var(--text-muted);
+        }
+
+        .feature-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 12px;
+            height: 1px;
+            background-color: rgba(255,255,255,0.7);
+            border-radius: 1px;
+        }
+
+        .card-footer {
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .price-tag {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .price-val {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: var(--accent);
+        }
+
+        .price-lbl {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 500;
+        }
+
+        .card-btn {
+            background-color: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s var(--ease);
+            box-shadow: var(--shadow-sm);
+            white-space: nowrap;
+        }
+
+        .card-btn:hover {
+            background-color: var(--accent);
+            color: var(--accent-text);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-md);
+            transform: scale(1.03);
+        }
+
+        .info-section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+            position: relative;
+        }
+
+        .info-section::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            background: linear-gradient(to top, rgba(9,9,11,1) 0%, rgba(12,12,14,0) 100%);
+            z-index: -1;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .info-grid { grid-template-columns: 1fr; gap: 48px; }
+        }
+
+        .info-block h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+            color: var(--accent);
+        }
+
+        .info-block h3 + h3 {
+            margin-top: 36px;
+        }
+
+        .info-block p {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-bottom: 28px;
+            text-wrap: balance;
+        }
+
+        .faq-section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .faq-list {
+            max-width: 760px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--card-bg);
+            overflow: hidden;
+            box-shadow: var(--card-glow);
+        }
+
+        .faq-item summary {
+            cursor: pointer;
+            padding: 20px 24px;
+            font-weight: 600;
+            font-size: 16px;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            color: var(--accent);
+        }
+
+        .faq-item summary::-webkit-details-marker { display: none; }
+
+        .faq-item summary::after {
+            content: "+";
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--text-muted);
+            flex-shrink: 0;
+            transition: transform 0.2s var(--ease);
+        }
+
+        .faq-item[open] summary::after {
+            content: "−";
+        }
+
+        .faq-item p {
+            padding: 0 24px 20px;
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        .cta-section {
+            padding: 88px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .cta-box {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 56px 40px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            box-shadow: var(--card-glow-hover);
+        }
+
+        .cta-box h2 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            margin-bottom: 16px;
+            color: var(--accent);
+        }
+
+        .cta-box p {
+            color: var(--text-muted);
+            font-size: 17px;
+            margin-bottom: 32px;
+        }
+
+        .cta-note {
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .contact-section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        .contact-intro h2 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            margin-bottom: 16px;
+            color: var(--accent);
+        }
+
+        .contact-intro p {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+
+        .contact-list {
+            list-style: none;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .contact-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .contact-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 8px;
+            height: 1px;
+            background: rgba(255,255,255,0.6);
+        }
+
+        .contact-list a {
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--text-muted);
+            transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+        }
+
+        .contact-list a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            box-shadow: var(--card-glow);
+        }
+
+        .form-row {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-row label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .form-row input,
+        .form-row textarea,
+        .form-row select {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: rgba(9, 9, 11, 0.6);
+            color: var(--text);
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.2s var(--ease);
+        }
+
+        .form-row input:focus,
+        .form-row textarea:focus,
+        .form-row select:focus {
+            border-color: var(--border-hover);
+            outline: none;
+        }
+
+        .form-row textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-hint {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .form-submit {
+            align-self: flex-start;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 48px 0;
+            text-align: center;
+            font-size: 13px;
+            color: #55555d;
+            background-color: var(--bg);
+        }
+
+        footer p {
+            letter-spacing: 0.02em;
+            margin-bottom: 8px;
+        }
+
+        footer p:last-child {
+            margin-bottom: 0;
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            border-bottom: 1px dashed #55555d;
+            transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+        }
+
+        footer a:hover {
+            color: var(--text);
+            border-bottom-color: var(--text);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 16px 24px 20px;
+                background: rgba(9, 9, 11, 0.98);
+                border-bottom: 1px solid var(--border);
+                gap: 4px;
+            }
+
+            .nav-links.open { display: flex; }
+
+            .nav-links a {
+                padding: 12px 14px;
+            }
+
+            .menu-toggle { display: flex; }
+
+            header .container { position: relative; }
+
+            .hero { padding: 96px 0 72px; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main" class="skip-link">Перейти к содержимому</a>
+
+    <header id="header">
+        <div class="container nav">
+            <a href="#" class="logo" aria-label="AI Инструменты — на главную">
+                <span class="logo-dot" aria-hidden="true"></span> AI Инструменты
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#services">Решения</a></li>
+                <li><a href="#process">Как работаем</a></li>
+                <li><a href="#faq">Вопросы</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Открыть меню">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h16"/>
+                    </svg>
+                </button>
+                <a href="#" class="nav-cta" data-tg="general">Обсудить задачу</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="hero">
+            <div class="container">
+                <h1>AI-инструменты для бизнеса.<br>Атомарные задачи под ключ.</h1>
+                <p class="hero-subtitle">Атомарные задачи. Фиксированная цена. Срок 2–5 дней. Без долгих внедрений и абонентских ловушек.</p>
+                <div class="hero-actions">
+                    <a href="#services" class="btn-primary">Выбрать решение</a>
+                    <a href="#" class="btn-secondary" data-tg="general">Написать в Telegram</a>
+                </div>
+                <div class="hero-badges">
+                    <span class="badge">Срок от 2 дней</span>
+                    <span class="badge">Фиксированный прайс</span>
+                    <span class="badge">Договор (НПД)</span>
+                    <span class="badge">Чек в течение часа</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="steps-section" id="process">
+            <div class="container">
+                <h2 class="section-title">Как проходит работа</h2>
+                <p class="section-subtitle">Четыре шага от заявки до готового инструмента — без бесконечных созвонов и размытых сроков.</p>
+                <div class="steps-grid">
+                    <article class="step-card">
+                        <div class="step-num">Шаг 01</div>
+                        <h3>Заявка</h3>
+                        <p>Заполняете форму на сайте или пишете в Telegram. Отвечаю в течение 4 часов в рабочее время.</p>
+                    </article>
+                    <article class="step-card">
+                        <div class="step-num">Шаг 02</div>
+                        <h3>Бриф и ТЗ</h3>
+                        <p>Отправляю короткую анкету из 10 пунктов — заполняете за 15 минут. Фиксирую ТЗ письменно, согласуем критерии результата.</p>
+                    </article>
+                    <article class="step-card">
+                        <div class="step-num">Шаг 03</div>
+                        <h3>Договор и разработка</h3>
+                        <p>Подписываем договор (НПД), предоплата 50%. За 2–5 дней — настройка, интеграции, тесты на ваших данных. Вся коммуникация в чате.</p>
+                    </article>
+                    <article class="step-card">
+                        <div class="step-num">Шаг 04</div>
+                        <h3>Передача результата</h3>
+                        <p>Передаю готовое решение, инструкцию и видеообзор. Доплата 50%, чек в течение часа. 14 дней на мелкие правки бесплатно.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="services-section" id="services">
+            <div class="container">
+                <h2 class="section-title">Меню решений</h2>
+                <p class="section-subtitle">Каждая карточка — отдельный продукт с фиксированной ценой и сроком. Можно заказать несколько решений параллельно.</p>
+                <div class="grid">
+
+                    <article class="card">
+                        <div class="card-header">
+                            <h3>AI-ответы на входящие заявки в Telegram</h3>
+                            <div class="meta-box">
+                                <div class="meta-line"><span class="meta-label">Для кого:</span> малый бизнес с потоком входящих сообщений</div>
+                                <div class="meta-line"><span class="meta-label">Проблема:</span> долгий ответ менеджеров сливает клиентов конкурентам</div>
+                            </div>
+                            <ul class="feature-list">
+                                <li>Мгновенный автоответ по вашей базе знаний (FAQ, прайсы)</li>
+                                <li>Удержание и вовлечение 24/7 без участия человека</li>
+                                <li>Сбор контактов и умная передача лида живому менеджеру</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price-tag">
+                                <span class="price-val">от 30 000 ₽</span>
+                                <span class="price-lbl">Срок: 2–3 дня</span>
+                            </div>
+                            <a href="#" class="card-btn" data-tg="order" data-service="AI-ответы в Telegram">Заказать</a>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <h3>AI-квалификация лидов со скорингом</h3>
+                            <div class="meta-box">
+                                <div class="meta-line"><span class="meta-label">Для кого:</span> онлайн-школы, недвижимость, B2B, автоуслуги</div>
+                                <div class="meta-line"><span class="meta-label">Проблема:</span> отдел продаж тратит часы на пустые и холодные звонки</div>
+                            </div>
+                            <ul class="feature-list">
+                                <li>Автоматический аккуратный опрос в чате (3–5 вопросов)</li>
+                                <li>Оценка лида по критериям (бюджет, срочность, запрос)</li>
+                                <li>Рейтинг 1–5: моментальный пуш менеджеру на горячих клиентов</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price-tag">
+                                <span class="price-val">от 45 000 ₽</span>
+                                <span class="price-lbl">Срок: 3–4 дня</span>
+                            </div>
+                            <a href="#" class="card-btn" data-tg="order" data-service="AI-квалификация лидов">Заказать</a>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <h3>Обогащение списков компаний по ИНН или сайтам</h3>
+                            <div class="meta-box">
+                                <div class="meta-line"><span class="meta-label">Для кого:</span> B2B отделы продаж, маркетологи, лидогенерация</div>
+                                <div class="meta-line"><span class="meta-label">Проблема:</span> ручной сбор данных о клиентах занимает рабочие недели</div>
+                            </div>
+                            <ul class="feature-list">
+                                <li>Скрипт-парсер агрегирует данные сотен компаний автономно</li>
+                                <li>Выгрузка в Excel: выручка, штат, отрасль, новости, ЛПР</li>
+                                <li>Скорость работы: обработка до 1000 контрагентов за 1 час</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price-tag">
+                                <span class="price-val">от 30 000 ₽</span>
+                                <span class="price-lbl">Срок: 2–3 дня</span>
+                            </div>
+                            <a href="#" class="card-btn" data-tg="order" data-service="Обогащение списков компаний">Заказать</a>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <h3>AI-генератор персональных писем для рассылок</h3>
+                            <div class="meta-box">
+                                <div class="meta-line"><span class="meta-label">Для кого:</span> B2B компании, агентства, холодные продажи</div>
+                                <div class="meta-line"><span class="meta-label">Проблема:</span> шаблонный спам не читают, а на кастомные письма нет сил</div>
+                            </div>
+                            <ul class="feature-list">
+                                <li>Генерация писем строго под специфику и боли каждой компании</li>
+                                <li>Глубокий контекст: интеграция ссылок, новостей и инфоповодов</li>
+                                <li>Полная готовность к массовой загрузке в ваш почтовый сервис</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price-tag">
+                                <span class="price-val">от 35 000 ₽</span>
+                                <span class="price-lbl">Срок: 3 дня</span>
+                            </div>
+                            <a href="#" class="card-btn" data-tg="order" data-service="AI-генератор писем">Заказать</a>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <h3>Telegram-бот с базой знаний по документам</h3>
+                            <div class="meta-box">
+                                <div class="meta-line"><span class="meta-label">Для кого:</span> службы поддержки, дистрибьюторы, регламенты</div>
+                                <div class="meta-line"><span class="meta-label">Проблема:</span> сотрудники тратят время на поиск условий в десятках PDF</div>
+                            </div>
+                            <ul class="feature-list">
+                                <li>Бот моментально отвечает по внутренним PDF, Word, Excel</li>
+                                <li>Гибридный поиск: безошибочно находит артикулы, цены и цифры</li>
+                                <li>Строгий ответ за 2–3 секунды с точной ссылкой на источник</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price-tag">
+                                <span class="price-val">от 45 000 ₽</span>
+                                <span class="price-lbl">Срок: 3–4 дня</span>
+                            </div>
+                            <a href="#" class="card-btn" data-tg="order" data-service="Telegram-бот с базой знаний">Заказать</a>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <h3>AI-навигатор по каталогу и прайс-листам</h3>
+                            <div class="meta-box">
+                                <div class="meta-line"><span class="meta-label">Для кого:</span> оптовики, дистрибьюторы, интернет-магазины</div>
+                                <div class="meta-line"><span class="meta-label">Проблема:</span> менеджеры путаются в остатках, размерах и матрице скидок</div>
+                            </div>
+                            <ul class="feature-list">
+                                <li>Понимание сложных запросов («есть ли X в размере Y на складе»)</li>
+                                <li>Мгновенный расчёт спецусловий и цен в зависимости от объёма партии</li>
+                                <li>Простая синхронизация данных путём загрузки нового Excel-файла</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price-tag">
+                                <span class="price-val">от 45 000 ₽</span>
+                                <span class="price-lbl">Срок: 4 дня</span>
+                            </div>
+                            <a href="#" class="card-btn" data-tg="order" data-service="AI-навигатор по каталогу">Заказать</a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section" id="about">
+            <div class="container info-grid">
+                <div class="info-block">
+                    <h3>Как строится работа</h3>
+                    <p>Мы не занимаемся «размытым» многомесячным консалтингом. Вы выбираете конкретную атомарную боль из меню, мы фиксируем ТЗ, подписываем договор и через несколько дней вы получаете полностью готовый рабочий инструмент.</p>
+                    <h3>Официальный статус</h3>
+                    <p>Работа ведётся официально по договору (статус самозанятого, НПД). Выставляются счета, предоставляются чеки через приложение «Мой налог» в течение часа после оплаты. Никаких серых схем.</p>
+                    <h3>Что входит в стоимость</h3>
+                    <p>Разработка решения под вашу задачу, тестирование на ваших данных, видеоинструкция 5–10 минут, PDF-инструкция, 14 дней на устранение мелких недочётов бесплатно.</p>
+                </div>
+                <div class="info-block">
+                    <h3>Ограничение на параллельные проекты</h3>
+                    <p>В целях сохранения жёсткого контроля качества и строгого соблюдения заявленных сроков (2–5 дней) в работе одновременно находится не более 3 клиентских проектов. Если места заняты, бронь переносится на ближайшее окно.</p>
+                    <h3>Что требуется от вас</h3>
+                    <p>Для старта необходимы только вводные данные: примеры переписок, файлы базы знаний, выгрузки каталогов или прайс-листы в зависимости от выбранного вами типа решения. Плюс аккаунт у AI-провайдера для подключения — поможем настроить.</p>
+                    <h3>Что НЕ входит в стоимость</h3>
+                    <p>API-расходы AI-провайдера (оплачиваются клиентом со своего аккаунта, типовой бюджет — от нескольких сотен до пары тысяч рублей в месяц), существенные изменения ТЗ после старта (оформляются доп. соглашением), поддержка после 14 дней (опционально, по абонементу).</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section" id="faq">
+            <div class="container">
+                <h2 class="section-title">Частые вопросы</h2>
+                <p class="section-subtitle">Коротко о том, что обычно спрашивают перед стартом.</p>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>Что нужно от меня для старта?</summary>
+                        <p>Заполненный бриф (отправляю в первый день после заявки, заполняется за 15 минут), материалы по задаче — документы, прайсы, описание процессов, — и оплата 50% от стоимости. Дальше работаю самостоятельно, согласовывая с вами ключевые точки в чате.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Что входит в фиксированную цену?</summary>
+                        <p>Разработка, настройка под ваши данные, базовая интеграция с вашими каналами (Telegram, Bitrix24, сайт), тестирование, передача инструкции в PDF и видеообзора. Доработки в рамках согласованного ТЗ — без доплат. API-расходы AI-провайдера в цену не входят и оплачиваются клиентом отдельно.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Что если результат меня не устроит?</summary>
+                        <p>Если результат не соответствует Техническому заданию — переделываю бесплатно. Если задача в брифе сформулирована неточно — обсуждаем, корректируем и фиксируем доп. соглашением. После сдачи включены 14 дней на правку мелких недочётов бесплатно.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Какой AI-провайдер используется и кто платит за API?</summary>
+                        <p>Конкретный выбор провайдера зависит от задачи: подключаем сервис, который лучше подходит по качеству, скорости и требованиям к хранению данных (включая локальные модели и российских провайдеров). API-расходы провайдера оплачивает клиент со своего аккаунта — на старте проекта помогаем настроить аккаунт и оценить ориентировочный месячный бюджет потребления. Такая модель убирает скрытые наценки и оставляет экономику работы полностью прозрачной.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Работаете ли вы с Bitrix24?</summary>
+                        <p>Да, интегрирую ботов и сценарии в Bitrix24: лиды, сделки, уведомления менеджерам. amoCRM и другие системы — по запросу, обсуждается на этапе брифа. Самописные CRM-конфигурации беру выборочно — нужно оценить трудозатраты.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Что с конфиденциальностью данных?</summary>
+                        <p>Документы и данные клиента не уходят в открытое обучение моделей, не передаются третьим лицам. По запросу подписываю NDA. После сдачи проекта по запросу удаляю полученные материалы со своих устройств и облачных хранилищ в течение 30 дней.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Работаете с компаниями или ИП?</summary>
+                        <p>Работаю как самозанятый (НПД). Договор оказания услуг, чек через приложение «Мой налог» в течение часа после оплаты. Принимаю оплату на расчётный счёт, карту юрлица, корпоративную карту. Для крупных контрактов от ₽150 000 при необходимости работаю через ИП.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Как понять, что сейчас есть свободное окно?</summary>
+                        <p>Напишите в Telegram — ответ в течение рабочего дня, сразу скажу ближайшую дату старта. Обычно окно открывается в течение 3–7 дней. Параллельно в работе не более 3 проектов, чтобы не разваливать сроки.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-box">
+                    <h2>Готовы убрать рутину за 2–5 дней?</h2>
+                    <p>Опишите задачу или выберите решение из меню — отвечу в Telegram с оценкой срока и фиксированной ценой.</p>
+                    <a href="#" class="btn-primary" data-tg="general">Написать в Telegram</a>
+                    <p class="cta-note">Ответ в течение рабочего дня · Договор НПД · До 3 проектов параллельно</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div class="container contact-grid">
+                <div class="contact-intro">
+                    <h2>Оставить заявку</h2>
+                    <p>Все заявки идут через Telegram-бот — это быстрее, чем email, и удобнее, чем созвон. Форма ниже соберёт ваши данные и откроет чат с ботом с уже готовым сообщением — останется только нажать «Отправить».</p>
+                    <ul class="contact-list">
+                        <li>Бот для заявок: <a href="#" data-tg="general" data-channel-link>@ai_tasks_biz_bot</a> — ответ в течение 4 часов</li>
+                        <li>Канал с заметками и кейсами: <a href="#" data-channel="ai_tasks_media">@ai_tasks_media</a></li>
+                        <li>NDA подписываю до передачи конфиденциальных данных</li>
+                        <li>Бриф и ТЗ — после первого ответа, без обязательств с вашей стороны</li>
+                    </ul>
+                </div>
+                <form class="contact-form" id="lead-form" novalidate>
+                    <div class="form-row">
+                        <label for="lead-name">Имя</label>
+                        <input type="text" id="lead-name" name="name" autocomplete="name" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="lead-contact">Telegram или email</label>
+                        <input type="text" id="lead-contact" name="contact" placeholder="@username или name@example.com" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="lead-service">Какое решение интересует</label>
+                        <select id="lead-service" name="service">
+                            <option value="">— выберите —</option>
+                            <option>AI-ответы в Telegram</option>
+                            <option>AI-квалификация лидов</option>
+                            <option>Обогащение списков компаний</option>
+                            <option>AI-генератор писем</option>
+                            <option>Telegram-бот с базой знаний</option>
+                            <option>AI-навигатор по каталогу</option>
+                            <option>Другое / расскажу в чате</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label for="lead-task">Кратко о задаче (опционально)</label>
+                        <textarea id="lead-task" name="task" placeholder="2–3 предложения о боли или цели"></textarea>
+                        <span class="form-hint">Не указывайте здесь конфиденциальные данные — обсудим их в защищённом канале после первого контакта.</span>
+                    </div>
+                    <button type="submit" class="btn-primary form-submit">Отправить в Telegram</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AI Инструменты. Атомарные AI-решения для бизнеса РФ/СНГ.</p>
+            <p>Канал: <a href="https://t.me/ai_tasks_media" target="_blank" rel="noopener noreferrer">@ai_tasks_media</a> · Бот для заявок: <a href="https://t.me/ai_tasks_biz_bot" target="_blank" rel="noopener noreferrer">@ai_tasks_biz_bot</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // === НАСТРОЙКИ ===
+        const TELEGRAM_BOT = 'ai_tasks_biz_bot';       // Бот для приёма заявок
+        const TELEGRAM_CHANNEL = 'ai_tasks_media';     // Канал с заметками и кейсами
+
+        function tgLink(type, serviceName) {
+            const base = 'https://t.me/' + TELEGRAM_BOT;
+            if (type === 'order' && serviceName) {
+                return base + '?text=' + encodeURIComponent('Здравствуйте! Хочу заказать: ' + serviceName);
+            }
+            if (type === 'general') {
+                return base + '?text=' + encodeURIComponent('Здравствуйте! Хочу обсудить AI-задачу для бизнеса.');
+            }
+            return base;
+        }
+
+        // Все ссылки с data-tg ведут в бот для заявок
+        document.querySelectorAll('[data-tg]').forEach(function (el) {
+            const type = el.getAttribute('data-tg');
+            const service = el.getAttribute('data-service') || '';
+            el.href = tgLink(type, service);
+            el.target = '_blank';
+            el.rel = 'noopener noreferrer';
+        });
+
+        // Ссылки с data-channel ведут в канал
+        document.querySelectorAll('[data-channel]').forEach(function (el) {
+            el.href = 'https://t.me/' + el.getAttribute('data-channel');
+            el.target = '_blank';
+            el.rel = 'noopener noreferrer';
+        });
+
+        // Sticky header — затемнение при скролле
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', function () {
+            header.classList.toggle('scrolled', window.scrollY > 8);
+        }, { passive: true });
+
+        // Мобильное меню
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        menuToggle.addEventListener('click', function () {
+            const open = navLinks.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', open);
+            menuToggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+        });
+        navLinks.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                navLinks.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Обработка формы заявки — открывает Telegram с предзаполненным сообщением для бота
+        const leadForm = document.getElementById('lead-form');
+        if (leadForm) {
+            leadForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const name = document.getElementById('lead-name').value.trim();
+                const contact = document.getElementById('lead-contact').value.trim();
+                const service = document.getElementById('lead-service').value;
+                const task = document.getElementById('lead-task').value.trim();
+
+                if (!name || !contact) {
+                    alert('Пожалуйста, укажите имя и контакт для связи.');
+                    return;
+                }
+
+                const lines = ['Здравствуйте! Заявка с сайта ai-tasks.ru'];
+                lines.push('');
+                lines.push('Имя: ' + name);
+                lines.push('Контакт: ' + contact);
+                if (service) lines.push('Услуга: ' + service);
+                if (task) {
+                    lines.push('');
+                    lines.push('Задача:');
+                    lines.push(task);
+                }
+                const message = lines.join('\n');
+
+                const url = 'https://t.me/' + TELEGRAM_BOT + '?text=' + encodeURIComponent(message);
+                window.open(url, '_blank');
+            });
+        }
+
+        /* Access granted. Traffic open. Verum Ipsum. */
+    </script>
+</body>
+</html>

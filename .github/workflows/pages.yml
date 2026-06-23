@@ -28,6 +28,7 @@ jobs:
         run: |
           mkdir -p public
           cp index.html public/index.html
+          cp alexander.jpg public/alexander.jpg
           cp CNAME public/CNAME
           touch public/.nojekyll
 

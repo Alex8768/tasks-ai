@@ -2299,6 +2299,24 @@
         window.addEventListener('scroll', setActiveNav, { passive: true });
         setActiveNav();
 
+        function scrollToCurrentHash() {
+            if (!window.location.hash || window.location.hash === '#') return;
+            var id = window.location.hash.slice(1);
+            try {
+                id = decodeURIComponent(id);
+            } catch (e) {
+                return;
+            }
+            var target = document.getElementById(id);
+            if (!target) return;
+            window.requestAnimationFrame(function () {
+                target.scrollIntoView({ behavior: 'auto', block: 'start' });
+                setActiveNav();
+            });
+        }
+        window.addEventListener('hashchange', scrollToCurrentHash);
+        window.setTimeout(scrollToCurrentHash, 0);
+
         // Обработка формы заявки — открывает Telegram с предзаполненным сообщением для бота
         const leadForm = document.getElementById('lead-form');
         if (leadForm) {

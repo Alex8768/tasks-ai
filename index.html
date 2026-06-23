@@ -2316,6 +2316,10 @@
         }
         window.addEventListener('hashchange', scrollToCurrentHash);
         window.setTimeout(scrollToCurrentHash, 0);
+        window.addEventListener('load', function () {
+            window.setTimeout(scrollToCurrentHash, 80);
+            window.setTimeout(scrollToCurrentHash, 350);
+        });
 
         // Обработка формы заявки — открывает Telegram с предзаполненным сообщением для бота
         const leadForm = document.getElementById('lead-form');

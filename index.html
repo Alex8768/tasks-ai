@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Рабочие участки продаж для B2B | tasks-ai.ru</title>
-    <meta name="description" content="Делаю для B2B-компаний рабочие участки продаж: Outbound System, Inbound System и Sales Operations. Поиск клиентов, обработка заявок и порядок в CRM без пустых обещаний.">
+    <meta name="description" content="Запуск и ведение outbound для B2B: сегмент, контакты, касания, ответы. Плюс входящие заявки и порядок в CRM. Без обещаний продаж и без «базы за вечер».">
     <meta property="og:title" content="Рабочие участки продаж для B2B">
     <meta property="og:description" content="Outbound, входящие заявки и порядок в CRM: кому писать, что писать, как принимать ответы и что делать дальше.">
     <meta property="og:type" content="website">
@@ -49,6 +49,10 @@
 
         html {
             scroll-behavior: smooth;
+        }
+
+        section {
+            scroll-margin-top: 88px;
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -708,9 +712,8 @@
         }
 
         .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+            opacity: 1;
+            transform: none;
         }
 
         .reveal.is-visible {
@@ -808,24 +811,25 @@
             text-wrap: balance;
         }
 
-        .red-flag {
+        .fit-note {
             margin-top: 28px;
             padding: 22px;
             border-radius: 14px;
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            background: rgba(251, 191, 36, 0.06);
+            border: 1px solid rgba(45, 212, 191, 0.25);
+            background: rgba(45, 212, 191, 0.06);
         }
 
-        .red-flag strong {
+        .fit-note strong {
             display: block;
-            color: var(--hot);
+            color: var(--brand);
             margin-bottom: 8px;
             font-size: 14px;
         }
 
-        .red-flag p {
+        .fit-note p {
             font-size: 14px;
             margin-bottom: 0;
+            color: var(--text-muted);
         }
 
         .detail-stack {
@@ -854,6 +858,26 @@
             color: var(--text-muted);
             font-size: 15px;
             margin-bottom: 14px;
+        }
+
+        .tool-note {
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(56, 189, 248, 0.22);
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        .tool-note strong {
+            display: block;
+            color: var(--brand-2);
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .tool-note p {
+            font-size: 14px;
+            margin-bottom: 0;
         }
 
         .deep-list {
@@ -917,6 +941,90 @@
 
         .mini-panel li {
             margin-bottom: 7px;
+        }
+
+        .tracker-preview {
+            display: grid;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .tracker-row {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr 1fr 1.1fr;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .tracker-row.header {
+            color: var(--accent);
+            font-weight: 700;
+            background: rgba(45, 212, 191, 0.07);
+            border-color: rgba(45, 212, 191, 0.18);
+        }
+
+        @media (max-width: 720px) {
+            .tracker-row {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+
+            .tracker-row.header {
+                display: none;
+            }
+        }
+
+        .person-card {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            max-width: 900px;
+            margin: 0 auto 28px;
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid rgba(45, 212, 191, 0.2);
+            background: rgba(20, 20, 22, 0.72);
+            box-shadow: var(--card-glow);
+        }
+
+        .person-photo {
+            width: 74px;
+            height: 74px;
+            border-radius: 16px;
+            flex: 0 0 auto;
+            object-fit: cover;
+            object-position: 50% 34%;
+            border: 1px solid rgba(45, 212, 191, 0.28);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+        }
+
+        .person-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .person-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        @media (max-width: 560px) {
+            .person-card {
+                flex-direction: column;
+            }
+
+            .person-photo {
+                width: 82px;
+                height: 82px;
+            }
         }
 
         .timeline-list {
@@ -1563,7 +1671,7 @@
                 <span class="logo-dot" aria-hidden="true"></span> tasks-ai
             </a>
             <ul class="nav-links" id="nav-links">
-                <li><a href="#systems">3 системы</a></li>
+                <li><a href="#systems">Три ситуации</a></li>
                 <li><a href="#outbound">Outbound</a></li>
                 <li><a href="#inbound">Inbound</a></li>
                 <li><a href="#sales-ops">CRM</a></li>
@@ -1587,63 +1695,67 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-copy">
-                    <p class="hero-eyebrow">tasks-ai.ru · B2B sales execution</p>
+                    <p class="hero-eyebrow">tasks-ai.ru · поиск клиентов и порядок в продажах</p>
                     <h1>Делаю рабочие участки продаж для B2B-компаний</h1>
-                    <p class="hero-subtitle">Поиск новых клиентов, обработка входящих заявок и порядок в CRM. Собираю не презентацию, а процесс: кому писать, что писать, как принимать ответы и какой следующий шаг фиксировать.</p>
+                    <p class="hero-subtitle">Ищу новых клиентов, разбираю входящие заявки, навожу порядок в CRM. Не презентацию — а процесс: кому писать, что писать, как принимать ответы и что делать дальше.</p>
                     <ul class="hero-quick">
-                        <li><strong>Главный вход:</strong> Outbound System — первая управляемая волна поиска клиентов</li>
-                        <li><strong>Дальше:</strong> Inbound System и Sales Operations, если ответы, заявки или CRM начинают тормозить продажи</li>
-                        <li><strong>Формат:</strong> первый цикл запуска + дальнейшее ведение по фактической реакции рынка</li>
+                        <li><strong>С чего начинаем:</strong> outbound — поиск и первые касания (главный вход для большинства задач)</li>
+                        <li><strong>Если ответы пошли:</strong> входящие заявки и CRM — когда теряются диалоги или нет следующего шага</li>
+                        <li><strong>Как ведём:</strong> первый цикл запуска, потом правки по фактической реакции рынка</li>
                     </ul>
                     <div class="hero-actions">
-                        <a href="#contact" class="btn-primary">Обсудить участок продаж</a>
-                        <a href="#systems" class="btn-secondary">Посмотреть 3 системы</a>
+                        <a href="#outbound" class="btn-primary">Разобрать outbound</a>
+                        <a href="#systems" class="btn-secondary">Три ситуации</a>
                     </div>
                     <div class="hero-badges">
-                        <span class="badge">Outbound</span>
-                        <span class="badge">Inbound</span>
-                        <span class="badge">Sales Operations</span>
+                        <span class="badge">Outbound от 60 000 ₽</span>
+                        <span class="badge">Inbound от 45 000 ₽</span>
+                        <span class="badge">CRM от 90 000 ₽</span>
                         <span class="badge">Договор / чек НПД</span>
+                    </div>
+                    <div class="tool-note">
+                        <strong>AI — рабочий инструмент, не продукт</strong>
+                        <p>Использую его там, где он ускоряет работу: исследование компаний, черновики сообщений, разбор ответов и короткие сводки. Решение, кому писать и что считать хорошим результатом, остаётся человеческой работой.</p>
                     </div>
                 </div>
 
-                <div class="hero-panel" id="demo-panel" aria-label="Карта клиентских вопросов">
-                    <div class="panel-label">На месте клиента я бы спросил вот это</div>
-                    <div class="demo-tabs" role="tablist" aria-label="Клиентские вопросы">
-                        <button type="button" class="demo-tab active" role="tab" aria-selected="true" data-step="0">Что покупаю?</button>
-                        <button type="button" class="demo-tab" role="tab" aria-selected="false" data-step="1">Что получу?</button>
-                        <button type="button" class="demo-tab" role="tab" aria-selected="false" data-step="2">Где риск?</button>
+                <div class="hero-panel" id="demo-panel" aria-label="Вопросы перед стартом">
+                    <div class="panel-label">Три вопроса, которые я задаю себе от вашего имени</div>
+                    <div class="demo-tabs" role="tablist" aria-label="Вопросы перед стартом">
+                        <button type="button" class="demo-tab active" role="tab" aria-selected="true" data-step="0">За что плачу?</button>
+                        <button type="button" class="demo-tab" role="tab" aria-selected="false" data-step="1">Что на выходе?</button>
+                        <button type="button" class="demo-tab" role="tab" aria-selected="false" data-step="2">Где подводные камни?</button>
                     </div>
                     <div class="demo-pane active" data-pane="0">
                         <div class="lead-summary">
-                            <div class="summary-title">Не набор инструментов, а участок продаж</div>
+                            <div class="summary-title">Не услуга из прайса, а участок работы</div>
                             <ul class="summary-list">
-                                <li><span>Outbound:</span> сегменты, компании, ЛПР, сообщения, ответы</li>
-                                <li><span>Inbound:</span> входящие заявки превращаются в понятную сводку</li>
-                                <li><span>CRM:</span> видно, кто ждёт ответа и что делать дальше</li>
-                                <li><span>Роль:</span> один ответственный человек от разбора до результата</li>
+                                <li><span>Outbound:</span> сегмент, компании, контакты, тексты, касания, ответы</li>
+                                <li><span>Inbound:</span> заявка до менеджера — с контактом и сутью, не простыня чата</li>
+                                <li><span>CRM:</span> видно, кто ждёт ответа и какой следующий шаг</li>
+                                <li><span>Исполнитель:</span> один человек от разбора до передачи результата</li>
                             </ul>
                         </div>
                     </div>
                     <div class="demo-pane" data-pane="1">
                         <div class="lead-summary">
-                            <div class="summary-title">Результат, который можно проверить</div>
+                            <div class="summary-title">Что можно проверить руками</div>
                             <ul class="summary-list">
-                                <li><span>На выходе:</span> таблица/CRM, тексты, статусы, правила работы</li>
-                                <li><span>В ответах:</span> отделение интереса от шума</li>
-                                <li><span>В CRM:</span> следующий шаг по живым контактам</li>
-                                <li><span>В отчёте:</span> что сработало, что убрать, что тестировать дальше</li>
+                                <li><span>Таблица или CRM</span> со статусами и правилами</li>
+                                <li><span>Тексты</span> первых и повторных касаний</li>
+                                <li><span>Ответы</span> — отделены интересные от шума</li>
+                                <li><span>Отчёт</span> — что сработало, что убрать, что тестировать</li>
                             </ul>
                         </div>
                     </div>
                     <div class="demo-pane" data-pane="2">
                         <div class="lead-summary">
-                            <div class="summary-title">Без обещаний с пустотой внутри</div>
+                            <div class="summary-title">Честно заранее</div>
                             <ul class="summary-list">
-                                <li><span>Не обещаю:</span> продажи, которые зависят от рынка и оффера</li>
-                                <li><span>Не делаю:</span> массовый спам с основного домена</li>
-                                <li><span>Не скрываю:</span> первый месяц нужен на систему и первые данные</li>
-                                <li><span>Важно:</span> со стороны клиента нужен ответственный за принятие лидов</li>
+                                <li><span>Продажи</span> не гарантирую — зависят от рынка и оффера</li>
+                                <li><span>Спам</span> с вашего основного домена не делаю</li>
+                                <li><span>Первый месяц</span> — на систему и первые данные, не на «100 лидов за вечер»</li>
+                                <li><span>От вас</span> нужен человек, который принимает лиды и отвечает быстро</li>
                             </ul>
                         </div>
                     </div>
@@ -1652,7 +1764,7 @@
         </section>
 
         <nav class="deck-nav container" aria-label="Навигация по странице">
-            <a href="#systems">3 системы</a>
+            <a href="#systems">Три ситуации</a>
             <a href="#outbound">Outbound</a>
             <a href="#inbound">Inbound</a>
             <a href="#sales-ops">CRM</a>
@@ -1664,23 +1776,23 @@
 
         <section class="answers-section" id="systems">
             <div class="container reveal">
-                <h2 class="section-title">3 системы вместо россыпи услуг</h2>
-                <p class="section-subtitle">Сначала выбираем ситуацию в продажах. Потом фиксируем, какой участок нужно собрать или привести в рабочий вид.</p>
+                <h2 class="section-title">Три ситуации — три участка работы</h2>
+                <p class="section-subtitle">Сначала смотрим, что болит. Потом фиксируем участок и результат, который можно проверить.</p>
                 <div class="answers-grid three">
                     <article class="answer-card">
-                        <div class="label">Outbound System</div>
+                        <div class="label">Outbound</div>
                         <h3>Нужны новые клиенты</h3>
-                        <p>Делаю процесс поиска B2B-клиентов: ICP, список компаний, поиск ЛПР, сообщения, трекер, обработка ответов и следующий шаг.</p>
+                        <p>Запуск и ведение поиска: кому писать, что писать, как касаться, как обрабатывать ответы и передавать интерес дальше. Не разовая база.</p>
                     </article>
                     <article class="answer-card">
-                        <div class="label">Inbound System</div>
+                        <div class="label">Inbound</div>
                         <h3>Клиенты уже пишут</h3>
-                        <p>Входящие из Telegram, WhatsApp или формы не падают сырой перепиской: менеджер получает задачу, контакт, контекст и понятную сводку.</p>
+                        <p>Входящие из Telegram, WhatsApp или формы доходят до менеджера с контактом, контекстом и понятным следующим шагом.</p>
                     </article>
                     <article class="answer-card">
-                        <div class="label">Sales Operations</div>
+                        <div class="label">CRM и операционка</div>
                         <h3>CRM есть, порядка нет</h3>
-                        <p>Разбираю статусы, зависшие сделки и ежедневные действия: кто ждёт ответа, где следующий шаг и что должен сделать менеджер.</p>
+                        <p>Статусы, зависшие сделки, ежедневные действия: кто ждёт ответа, что делать дальше, что видит руководитель.</p>
                     </article>
                 </div>
             </div>
@@ -1689,44 +1801,47 @@
         <section class="detail-section" id="outbound">
             <div class="container detail-layout reveal">
                 <div class="detail-lead">
-                    <span class="system-name">Outbound System</span>
-                    <h2>Планомерный поиск новых B2B-клиентов</h2>
-                    <p>Это не выгрузка базы и не “100 лидов за вечер”. Нормальный outbound начинается с выбора сегмента, признаков подходящей компании, поиска контактов, сообщений, малых волн, обработки ответов и регулярной корректировки.</p>
-                    <p>Первый цикл нужен, чтобы запустить управляемую работу и получить первые данные: кто отвечает, какие сегменты слабые, какие сообщения живые, где нужен следующий шаг.</p>
-                    <div class="red-flag">
-                        <strong>Красный флаг клиента: “Мне просто нужна база?”</strong>
-                        <p>Если нужна только таблица компаний, это можно купить дешевле. Я беру задачу, где нужна система: кого искать, почему именно их, что писать, как не потерять ответы и как передать живой интерес дальше.</p>
+                    <span class="system-name">Outbound · главный вход</span>
+                    <h2>Запуск и ведение поиска новых B2B-клиентов</h2>
+                    <p>Это не выгрузка базы и не «100 лидов за вечер». Это повторяемый процесс: сегмент, критерии отбора, компании, контакты, тексты, малые волны касаний, обработка ответов и регулярная корректировка по реакции рынка.</p>
+                    <p>Первый месяц — запуск системы и первые данные: кто отвечает, какие сегменты слабые, какие сообщения живые, где нужен следующий шаг. Основная работа делается до первых ответов.</p>
+                    <div class="fit-note">
+                        <strong>Если нужна только таблица компаний</strong>
+                        <p>Такую задачу можно закрыть дешевле и быстрее — без меня. Я беру работу, где нужен весь контур: кого искать, почему именно их, что писать, как не потерять ответ и как передать живой интерес менеджеру.</p>
                     </div>
                 </div>
                 <div class="detail-stack">
                     <article class="deep-card">
-                        <h3>Что входит в запуск</h3>
+                        <h3>Что входит в первый месяц</h3>
                         <ul class="deep-list">
-                            <li>ICP: какие компании действительно подходят</li>
-                            <li>Scoring A/B/C: кого брать в первую очередь</li>
+                            <li>Портрет клиента (ICP) и приоритеты A/B/C</li>
                             <li>Стоп-сегменты и правила исключений</li>
-                            <li>Поиск компаний и контактных точек</li>
+                            <li>Инфраструктура отправки: домены, ящики, лимиты, репутация</li>
+                            <li>Поиск компаний и обогащение контактов</li>
                             <li>Проверка спорных и пограничных кейсов</li>
-                            <li>Тексты первых сообщений и повторных касаний</li>
-                            <li>Трекер статусов: найден, написали, ответил, следующий шаг</li>
-                            <li>Разбор ответов и отделение интереса от шума</li>
+                            <li>2–3 гипотезы позиционирования и тексты касаний</li>
+                            <li>Follow-up и адаптация под роли (CEO, product, CTO)</li>
+                            <li>Старт малых волн без перегрева доменов</li>
+                            <li>Обработка ответов и отделение интереса от шума</li>
+                            <li>Таблица или CRM со статусами</li>
+                            <li>Еженедельный отчёт и корректировка по данным</li>
                         </ul>
                     </article>
                     <article class="deep-card">
                         <h3>Что считается результатом</h3>
                         <div class="split-card">
                             <div class="mini-panel">
-                                <strong>Принимается как результат</strong>
+                                <strong>Считается результатом</strong>
                                 <ul>
-                                    <li>компания соответствует согласованному ICP;</li>
+                                    <li>компания подходит под согласованный портрет клиента;</li>
                                     <li>найден релевантный контакт или точка входа;</li>
-                                    <li>есть понятная причина обращения;</li>
-                                    <li>получен ответ, который можно обработать;</li>
-                                    <li>зафиксирован следующий шаг.</li>
+                                    <li>есть признак актуальной задачи у компании;</li>
+                                    <li>получен ответ с предметным интересом;</li>
+                                    <li>зафиксирован следующий шаг: встреча, демо, передача менеджеру.</li>
                                 </ul>
                             </div>
                             <div class="mini-panel">
-                                <strong>Не выдаётся за результат</strong>
+                                <strong>Не считается результатом</strong>
                                 <ul>
                                     <li>сырые контакты без проверки;</li>
                                     <li>автоответы и невалидные email;</li>
@@ -1738,19 +1853,63 @@
                         </div>
                     </article>
                     <article class="deep-card">
-                        <h3>Почему это не делается за один день</h3>
+                        <h3>Как выглядит рабочий трекер</h3>
+                        <p>Это не финальный дизайн таблицы, а пример логики: по каждому контакту видно, почему он выбран, что уже сделано и какой следующий шаг.</p>
+                        <div class="tracker-preview" aria-label="Пример строк outbound-трекера">
+                            <div class="tracker-row header">
+                                <span>Компания</span>
+                                <span>Почему подходит</span>
+                                <span>Статус</span>
+                                <span>Следующий шаг</span>
+                            </div>
+                            <div class="tracker-row">
+                                <span>B2B SaaS / подписки</span>
+                                <span>есть тарифы и регулярные платежи</span>
+                                <span>ответил product lead</span>
+                                <span>уточнить интеграции и передать на созвон</span>
+                            </div>
+                            <div class="tracker-row">
+                                <span>Сервисная компания</span>
+                                <span>много входящих заявок из мессенджеров</span>
+                                <span>первое касание отправлено</span>
+                                <span>вернуться через 3 дня с коротким follow-up</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="deep-card">
+                        <h3>Как выглядит первый месяц</h3>
                         <ul class="timeline-list">
-                            <li><span>Дни 1–2</span> ICP, критерии результата, стоп-сегменты, формат трекера.</li>
-                            <li><span>Дни 3–7</span> первые источники, контакты, сообщения, статусы, подготовка малых волн.</li>
-                            <li><span>Дни 8–14</span> запуск аккуратных касаний, проверка ответов, чистка базы и текстов.</li>
-                            <li><span>Дни 15–30</span> регулярные волны, обработка ответов, отчётность, корректировка сегментов.</li>
-                            <li><span>Дальше</span> ведение, расширение каналов и масштабирование только по фактическим данным.</li>
+                            <li><span>Дни 1–2</span> портрет клиента, критерии результата, стоп-сегменты, схема инфраструктуры.</li>
+                            <li><span>Дни 3–7</span> таблица или CRM, домены и ящики, DNS, первые источники, тексты.</li>
+                            <li><span>Дни 8–14</span> прогрев отправки, первая база, тест малых волн.</li>
+                            <li><span>Дни 15–30</span> полноценные волны, обработка ответов, отчёт, правки сегментов и текстов.</li>
+                            <li><span>Дальше</span> масштабирование только при подтверждённой конверсии и достаточной инфраструктуре.</li>
                         </ul>
                     </article>
                     <article class="deep-card">
+                        <h3>Что нужно от вас</h3>
+                        <ul class="deep-list">
+                            <li>Описание продукта и короткий sales deck или демо</li>
+                            <li>Подтверждение портрета клиента и критериев «целевого» лида</li>
+                            <li>Стоп-лист сегментов и нежелательных компаний</li>
+                            <li>Ответственный за принятие и отклонение лидов</li>
+                            <li>Доступ к согласованной таблице или CRM</li>
+                            <li>Готовность быстро разбирать ответы и спорные кейсы</li>
+                            <li>Оплата доменов, ящиков и внешних сервисов — на вашей стороне</li>
+                        </ul>
+                    </article>
+                    <article class="deep-card">
+                        <h3>Почему первый месяц оплачивается</h3>
+                        <p>Это не пробная рассылка. До первых ответов делается основная работа: сегмент, база, инфраструктура, тексты, фильтры, логика обработки, защита репутации домена. Эти элементы остаются у вас и используются дальше — даже если решите вести outbound своими силами.</p>
+                    </article>
+                    <article class="deep-card">
+                        <h3>Что могу и не могу гарантировать</h3>
+                        <p><strong>Не гарантирую</strong> продажи и рыночную реакцию до первого цикла — они зависят от оффера, базы, каналов, доставляемости и скорости вашей обработки ответов. <strong>Гарантирую</strong> управляемый процесс: объём проработанной базы, качество фильтрации, регулярные касания, обработку ответов, прозрачную отчётность и замену невалидных контактов в согласованных рамках.</p>
+                    </article>
+                    <article class="deep-card">
                         <h3>Стоимость и формат</h3>
-                        <p>Запуск первой управляемой волны — от 60 000 ₽. Если нужен полноценный ежемесячный outbound-контур с регулярными волнами, обработкой ответов и отчётностью, формат и стоимость фиксируются отдельно после разбора сегмента и инфраструктуры.</p>
-                        <a href="#contact" class="card-btn" data-pick-service="Outbound System">Обсудить Outbound</a>
+                        <p>Запуск первого месяца — от 60 000 ₽. Полноценный ежемесячный контур с регулярными волнами, обработкой ответов и отчётностью — отдельно, после разбора сегмента, объёма и инфраструктуры. Расходы на домены, сервисы отправки и обогащения — на стороне клиента.</p>
+                        <a href="#contact" class="card-btn" data-pick-service="Outbound">Обсудить outbound</a>
                     </article>
                 </div>
             </div>
@@ -1758,8 +1917,8 @@
 
         <section class="services-section" id="inbound">
             <div class="container reveal">
-                <h2 class="section-title">Inbound System</h2>
-                <p class="section-subtitle">Обработка входящих обращений так, чтобы менеджеру приходила понятная заявка, а не сырой поток сообщений.</p>
+                <h2 class="section-title">Inbound · когда клиенты уже пишут</h2>
+                <p class="section-subtitle">Логичное продолжение, если ответы пошли, но менеджеры тонут в переписке. До них доходит заявка с контактом и сутью — не простыня чата.</p>
                 <div class="grid">
                     <article class="card featured">
                         <span class="card-badge">Входящие</span>
@@ -1781,21 +1940,21 @@
                                 <span class="price-val">от 45 000 ₽</span>
                                 <span class="price-lbl">Запуск участка</span>
                             </div>
-                            <a href="#contact" class="card-btn" data-pick-service="Inbound System">Обсудить</a>
+                            <a href="#contact" class="card-btn" data-pick-service="Inbound">Обсудить inbound</a>
                         </div>
                     </article>
                     <article class="card">
                         <div class="card-header">
-                            <h3>Что снимает красный флаг</h3>
+                            <h3>Как понять, что участок сработал</h3>
                             <div class="meta-box">
-                                <div class="meta-line"><span class="meta-label">Не продаётся:</span> “бот ради бота”</div>
-                                <div class="meta-line"><span class="meta-label">Проверка:</span> менеджеру стало проще начать разговор или нет</div>
+                                <div class="meta-line"><span class="meta-label">Не продаю:</span> «бот ради бота»</div>
+                                <div class="meta-line"><span class="meta-label">Проверка:</span> менеджеру стало проще начать разговор</div>
                             </div>
                             <ul class="feature-list">
-                                <li>Нет обещания, что сценарий сам продаст за менеджера</li>
-                                <li>Нет длинной формы, которую клиент бросит на втором вопросе</li>
-                                <li>Нет передачи конфиденциальных данных до согласования доступа</li>
-                                <li>Есть понятный результат: сводка заявки и следующий шаг</li>
+                                <li>Не обещаю, что сценарий продаст за менеджера</li>
+                                <li>Не делаю анкету на 20 полей — клиент бросит на втором вопросе</li>
+                                <li>Не прошу конфиденциальные данные до согласования доступа</li>
+                                <li>На выходе — сводка заявки и следующий шаг, который видно в CRM или таблице</li>
                             </ul>
                         </div>
                     </article>
@@ -1805,8 +1964,8 @@
 
         <section class="services-section" id="sales-ops">
             <div class="container reveal">
-                <h2 class="section-title">Sales Operations</h2>
-                <p class="section-subtitle">Порядок в CRM и ежедневных действиях менеджеров: статусы, следующий шаг, контроль зависших контактов.</p>
+                <h2 class="section-title">CRM и операционка · когда ответы есть, а порядка нет</h2>
+                <p class="section-subtitle">Подключаю, когда outbound или inbound уже дают контакты, но CRM не показывает следующий шаг и зависшие сделки копятся.</p>
                 <div class="grid">
                     <article class="card featured">
                         <span class="card-badge">CRM</span>
@@ -1828,7 +1987,7 @@
                                 <span class="price-val">от 90 000 ₽</span>
                                 <span class="price-lbl">Разбор и запуск</span>
                             </div>
-                            <a href="#contact" class="card-btn" data-pick-service="Sales Operations">Обсудить</a>
+                            <a href="#contact" class="card-btn" data-pick-service="CRM и операционка">Обсудить CRM</a>
                         </div>
                     </article>
                     <article class="card">
@@ -1853,25 +2012,32 @@
         <section class="compare-section" id="why">
             <div class="container reveal">
                 <h2 class="section-title">Почему со мной работают</h2>
-                <p class="section-subtitle">Я соединяю коммерческую задачу, CRM-логику и быструю сборку рабочего результата в одних руках.</p>
+                <p class="section-subtitle">Опыт B2B-продаж, CRM и сборки рабочих процессов — в одних руках, без цепочки подрядчиков.</p>
+                <div class="person-card">
+                    <img class="person-photo" src="alexander.jpg" alt="Александр">
+                    <div>
+                        <h3>Александр</h3>
+                        <p>Я не продаю “настройку бота” или “таблицу лидов”. Беру один коммерческий участок, разбираю его как человек из продаж и собираю так, чтобы результат можно было открыть, проверить и передать менеджеру в работу.</p>
+                    </div>
+                </div>
                 <div class="compare-grid">
                     <div class="compare-col before">
-                        <h3>Что настораживает клиента</h3>
+                        <h3>Что обычно не устраивает</h3>
                         <ul>
-                            <li>Подрядчик обещает продажи, но не объясняет, что будет сделано</li>
-                            <li>Сайт говорит лозунгами, а за ними не видно состава работы</li>
-                            <li>Один человек пишет тексты, другой настраивает CRM, третий принимает решения</li>
-                            <li>Результат выглядит как отчёт, который нельзя использовать в работе</li>
+                            <li>Обещают «лиды» или «продажи», но не показывают, из чего состоит работа</li>
+                            <li>На созвоне одно, в договоре другое, в отчёте — третье</li>
+                            <li>Тексты пишет один, CRM настраивает другой, решения принимает третий</li>
+                            <li>На выходе PDF или таблица, которую некому встроить в ежедневную работу</li>
                         </ul>
                     </div>
                     <div class="compare-col after">
-                        <h3>Как работаю я</h3>
+                        <h3>Как у меня</h3>
                         <ul>
-                            <li>B2B-продажи + CRM + быстрая сборка рабочего результата</li>
-                            <li>Один ответственный человек от разбора до передачи</li>
-                            <li>Объясняю, что входит, что не входит и где зависит от рынка</li>
-                            <li>Смотрю на следующий шаг, а не только на инструмент</li>
-                            <li>Результат можно открыть и использовать</li>
+                            <li>Один человек: от разбора задачи до передачи результата</li>
+                            <li>До старта фиксируем, что входит, что нет и что зависит от рынка</li>
+                            <li>Результат — таблица, CRM, тексты, статусы: то, чем пользуются каждый день</li>
+                            <li>Смотрю на следующий шаг менеджера, а не на красивый инструмент</li>
+                            <li>После первого цикла видно по цифрам: что работает, что убрать</li>
                         </ul>
                     </div>
                 </div>
@@ -1886,7 +2052,7 @@
                     <article class="step-card">
                         <div class="step-num">Шаг 01</div>
                         <h3>Разбираем ситуацию</h3>
-                        <p>Что сейчас нужно: новые клиенты, обработка входящих или порядок в CRM. Отдельно фиксируем, что будет красным флагом.</p>
+                        <p>Что сейчас нужно: новые клиенты, входящие заявки или порядок в CRM. Отдельно фиксируем, когда задача мне не подходит.</p>
                     </article>
                     <article class="step-card">
                         <div class="step-num">Шаг 02</div>
@@ -1948,19 +2114,19 @@
                         <p>База сама по себе не отвечает на вопросы: кому писать первым, почему именно им, что писать, как обработать ответ, когда вернуться повторно и что передать менеджеру. Если вам нужна только таблица компаний, это отдельная дешёвая задача. Здесь работа шире.</p>
                     </details>
                     <details class="faq-item">
-                        <summary>Вы гарантируете продажи?</summary>
-                        <p>Нет. Продажи зависят от рынка, продукта, цены, оффера, скорости обработки ответов и готовности клиента к разговору. Я гарантирую управляемый процесс, прозрачный объём работы, качество фильтрации, обработку ответов и честный отчёт по фактической реакции.</p>
+                        <summary>Гарантируете продажи?</summary>
+                        <p>Нет. Продажи зависят от рынка, продукта, цены, оффера, скорости обработки ответов и готовности клиента к разговору. Гарантирую управляемый процесс, прозрачный объём работы, качество фильтрации, обработку ответов и честный отчёт по фактической реакции.</p>
                     </details>
                     <details class="faq-item">
                         <summary>Почему первый месяц оплачивается?</summary>
-                        <p>Потому что основная работа начинается до первых ответов: ICP, scoring, база, контакты, тексты, трекер, статусы, инфраструктура и правила обработки. Эти элементы остаются у клиента и используются дальше.</p>
+                        <p>Потому что основная работа начинается до первых ответов: портрет клиента, база, контакты, тексты, трекер, инфраструктура и правила обработки. Эти элементы остаются у вас и используются дальше.</p>
                     </details>
                     <details class="faq-item">
                         <summary>Можно работать по НПД?</summary>
-                        <p>Да. Для коротких проектных работ это нормальная схема: договор, чек, фиксированный результат и один ответственный исполнитель. Если у клиента есть особые требования к формату договора, это обсуждается до старта.</p>
+                        <p>Да. Для проектных работ это нормальная схема: договор, чек, фиксированный результат и один ответственный исполнитель. Особые требования к формату договора обсуждаем до старта.</p>
                     </details>
                     <details class="faq-item">
-                        <summary>Вы отправляете письма или сообщения за нас?</summary>
+                        <summary>Отправляете письма с нашего домена?</summary>
                         <p>Это обсуждается отдельно. Важно не рисковать основным доменом и репутацией почты. На старте я готовлю сегменты, тексты, трекер и правила обработки; отправка и инфраструктура фиксируются отдельно.</p>
                     </details>
                     <details class="faq-item">
@@ -1975,7 +2141,7 @@
             <div class="container contact-grid reveal">
                 <div class="contact-intro">
                     <h2>Обсудить участок продаж</h2>
-                    <p>Опишите, что сейчас важнее: найти новых клиентов, разобрать входящие заявки или навести порядок в CRM. Я отвечу, с какого участка логичнее начать и где есть красные флаги.</p>
+                    <p>Опишите, что сейчас важнее: найти новых клиентов, разобрать входящие или навести порядок в CRM. Отвечу, с чего логичнее начать и подходит ли вам формат работы.</p>
                     <ul class="contact-list">
                         <li>Бот для заявки: <a href="#" data-tg="general">@ai_tasks_biz_bot</a></li>
                         <li>Канал с заметками: <a href="#" data-channel="ai_tasks_media">@ai_tasks_media</a></li>
@@ -1996,9 +2162,9 @@
                         <label for="lead-service">Какой участок разобрать</label>
                         <select id="lead-service" name="service">
                             <option value="">— выберите —</option>
-                            <option value="Outbound System">Outbound System — поиск новых B2B-клиентов</option>
-                            <option value="Inbound System">Inbound System — входящие заявки</option>
-                            <option value="Sales Operations">Sales Operations — CRM и следующие шаги</option>
+                            <option value="Outbound">Outbound — поиск новых B2B-клиентов</option>
+                            <option value="Inbound">Inbound — входящие заявки</option>
+                            <option value="CRM и операционка">CRM и операционка — следующие шаги</option>
                             <option value="Другое">Пока не знаю / расскажу в чате</option>
                         </select>
                     </div>
@@ -2031,7 +2197,7 @@
                 return base + '?text=' + encodeURIComponent('Здравствуйте! Хочу обсудить участок: ' + serviceName);
             }
             if (type === 'general') {
-                return base + '?text=' + encodeURIComponent('Здравствуйте! Хочу обсудить участок продаж: outbound, входящие заявки или CRM.');
+                return base + '?text=' + encodeURIComponent('Здравствуйте! Хочу обсудить участок продаж: outbound, входящие или CRM.');
             }
             return base;
         }
